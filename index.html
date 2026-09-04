@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tortex Admin Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div class="admin-login" id="adminLogin"><div class="admin-login-box">
+<img src="../tortex-logo.png" alt="Tortex"><h2>Admin Login</h2><p>Enter demo credentials to access the control center.</p>
+<input id="adminUser" placeholder="Username" value="admin"><input id="adminPass" type="password" placeholder="Password" value="admin123">
+<button onclick="adminSignIn()">Sign In</button><small>Demo credentials: admin / admin123</small></div></div>
+<aside class="sidebar">
+  <div class="logo"><img src="../tortex-logo.png" alt="Tortex"></div>
+  <div class="admin-tag">ADMIN CONSOLE</div>
+  <nav>
+    <a class="active" href="#dashboard">▦ <span>Dashboard</span></a>
+    <a href="#content">◫ <span>Content</span></a>
+    <a href="#movies">▶ <span>Movies</span></a>
+    <a href="#series">▤ <span>Web Series</span></a>
+    <a href="#users">♙ <span>Users</span></a>
+    <a href="#subscriptions">◈ <span>Subscriptions</span></a>
+    <a href="#analytics">⌁ <span>Analytics</span></a>
+    <a href="#settings">⚙ <span>Settings</span></a>
+  </nav>
+  <a class="back" href="../index.html">← View Website</a>
+</aside>
+
+<main class="main">
+<header><div><p class="kicker">TORTEX / CONTROL CENTER</p><h1>Good evening, Admin</h1></div><div class="header-right"><span class="status">● System Live</span><button class="avatar">A</button></div></header>
+
+<section id="dashboard" class="stats">
+  <div class="stat"><small>TOTAL USERS</small><strong>128,420</strong><span class="up">↑ 12.4%</span></div>
+  <div class="stat"><small>ACTIVE SUBSCRIPTIONS</small><strong>36,892</strong><span class="up">↑ 8.7%</span></div>
+  <div class="stat"><small>MONTHLY REVENUE</small><strong>₹48.6L</strong><span class="up">↑ 16.2%</span></div>
+  <div class="stat"><small>WATCH HOURS</small><strong>2.84M</strong><span class="up">↑ 21.1%</span></div>
+</section>
+
+<section class="grid2">
+  <div class="panel" id="analytics"><div class="panel-head"><h2>Platform Overview</h2><select><option>Last 30 days</option><option>Last 7 days</option></select></div>
+    <div class="chart"><div class="bars"><i style="height:38%"></i><i style="height:52%"></i><i style="height:44%"></i><i style="height:68%"></i><i style="height:60%"></i><i style="height:78%"></i><i style="height:92%"></i><i style="height:72%"></i><i style="height:84%"></i><i style="height:96%"></i><i style="height:80%"></i><i style="height:100%"></i></div><div class="months"><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span></div></div>
+  </div>
+  <div class="panel"><div class="panel-head"><h2>Quick Actions</h2></div><div class="quick">
+    <button onclick="openModal('Add Movie')">＋ Add Movie</button><button onclick="openModal('Add Web Series')">＋ Add Web Series</button><button onclick="openModal('Upload Banner')">＋ Upload Banner</button><button onclick="showToast('Subscription plans opened')">◈ Manage Plans</button>
+  </div></div>
+</section>
+
+<section class="panel" id="content">
+<div class="panel-head"><h2>Content Library</h2><div><button class="filter active">All</button><button class="filter">Movies</button><button class="filter">Series</button><button class="add" onclick="openModal('Add Content')">＋ Add Content</button></div></div>
+<div class="table-wrap"><table><thead><tr><th>Title</th><th>Type</th><th>Genre</th><th>Status</th><th>Views</th><th>Actions</th></tr></thead><tbody>
+<tr><td><b>The Last Horizon</b><small>2026 • 2h 18m</small></td><td>Movie</td><td>Action / Sci‑Fi</td><td><em class="live">Published</em></td><td>1.24M</td><td><button class="action" onclick="openModal('Edit The Last Horizon')">Edit</button><button class="action danger" onclick="removeRow(this)">Delete</button></td></tr>
+<tr><td><b>Dark Protocol</b><small>Season 1 • 8 Episodes</small></td><td>Series</td><td>Thriller</td><td><em class="live">Published</em></td><td>986K</td><td><button class="action" onclick="openModal('Edit Dark Protocol')">Edit</button><button class="action danger" onclick="removeRow(this)">Delete</button></td></tr>
+<tr><td><b>After The Rain</b><small>2026 • 2h 02m</small></td><td>Movie</td><td>Drama</td><td><em class="draft">Draft</em></td><td>—</td><td><button class="action" onclick="openModal('Edit After The Rain')">Edit</button><button class="action danger" onclick="removeRow(this)">Delete</button></td></tr>
+</tbody></table></div>
+</section>
+
+<section class="grid2 lower">
+<div class="panel" id="users"><div class="panel-head"><h2>Recent Users</h2><a>View all</a></div>
+<div class="user"><span>RK</span><div><b>Rohan Kumar</b><small>rohan@example.com</small></div><em class="live">Premium</em></div>
+<div class="user"><span>AM</span><div><b>Arjun Mehta</b><small>arjun@example.com</small></div><em class="free">Free</em></div>
+<div class="user"><span>PS</span><div><b>Priya Shah</b><small>priya@example.com</small></div><em class="live">Premium</em></div>
+</div>
+<div class="panel" id="subscriptions"><div class="panel-head"><h2>Subscription Plans</h2><button class="add" onclick="openModal('Add Plan')">＋ Plan</button></div>
+<div class="plan"><b>Mobile</b><strong>₹149<span>/month</span></strong><small>1 screen • HD</small><button onclick="openModal('Edit Mobile Plan')">Edit</button></div>
+<div class="plan"><b>Premium</b><strong>₹299<span>/month</span></strong><small>4 screens • 4K</small><button onclick="openModal('Edit Premium Plan')">Edit</button></div>
+</div>
+</section>
+
+<section class="panel" id="settings"><div class="panel-head"><h2>Admin Settings</h2></div><div class="settings"><label>Admin email<input value="admin@tortex.com"></label><label>Site name<input value="Tortex Movies"></label><label>Default currency<select><option>INR — ₹</option><option>USD — $</option></select></label><label>Maintenance mode <input type="checkbox"></label><button class="add" onclick="showToast('Settings saved')">Save Changes</button></div></section>
+</main>
+
+<div class="modal" id="modal"><div class="modal-box"><button class="x" onclick="closeModal()">×</button><h2 id="modalTitle">Add Content</h2><label>Title<input placeholder="Enter title"></label><label>Type<select><option>Movie</option><option>Web Series</option></select></label><label>Genre<input placeholder="Action, Drama..."></label><label>Poster URL<input placeholder="https://..."></label><label>Description<textarea placeholder="Short description"></textarea></label><button class="save" onclick="saveModal()">Save</button></div></div>
+<div class="toast" id="toast"></div>
+<script src="admin.js"></script>
+</body></html>
